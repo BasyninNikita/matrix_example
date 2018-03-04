@@ -45,7 +45,6 @@ std::size_t matrix_t::rows() const
 {
     return rows_;
 }
-
 std::size_t matrix_t::collumns() const
 {
     return collumns_;
@@ -75,7 +74,7 @@ matrix_t matrix_t::operator +( matrix_t const & other ) const
 }
 matrix_t matrix_t::operator -( matrix_t const & other ) const
 {
-	matrix_t result;	
+	matrix_t result;
 	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
 	  	result.elements_ = new float *[rows_];
 		for (std::size_t i = 0; i<rows_; i++) {
@@ -104,7 +103,7 @@ matrix_t matrix_t::operator *( matrix_t const & other ) const
 			result.elements_[i] = new float [other.collumns_];
 	    }
 	    result.rows_ = rows_;
-	    result.collumns_ = other.collumns_
+	    result.collumns_ = other.collumns_;
 		for (std::size_t i = 0; i < rows_; ++i) {
 			for (std::size_t j = 0; j < other.collumns_; ++j) {
 				int result_ = 0;
@@ -151,7 +150,6 @@ matrix_t & matrix_t::operator +=( matrix_t const & other )
 	}
 	return *this;
 }
-
 matrix_t & matrix_t::operator *=( matrix_t const & other )
 {
 	matrix_t result;
@@ -177,15 +175,13 @@ matrix_t & matrix_t::operator *=( matrix_t const & other )
 		std::cout << std::endl << "I can't do it";
 		exit(0);
 	}
-	
 	return *this;
 }
-
 std::istream & matrix_t::read( std::istream & stream )
 {
     std::size_t rows;
     std::size_t collumns;
-    char symbol;
+    char symbol;=
     bool success = true;
     if( stream >> rows && stream >> symbol && symbol == ',' && stream >> collumns ) {
         float ** elements = new float *[ rows ];
@@ -231,7 +227,7 @@ std::ostream & matrix_t::write( std::ostream & stream ) const
 {
     stream << rows_ << ", " << collumns_;
     for( std::size_t i = 0; i < rows_; ++i ) {
-        stream << '\n';
+	stream << '\n';
         for( std::size_t j = 0; j < collumns_; ++j ) {
             stream << elements_[ i ][ j ];
             if( j != collumns_ - 1 ) {
@@ -239,6 +235,6 @@ std::ostream & matrix_t::write( std::ostream & stream ) const
             }
         }
     }
-  if (collumns_ != rows_) stream << '\n';  
+    if (collumns_ != rows_) stream << '\n';
 	return stream;
 }
