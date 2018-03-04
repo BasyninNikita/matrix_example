@@ -56,7 +56,7 @@ std::size_t matrix_t::collumns() const
 matrix_t matrix_t::operator +( matrix_t const & other ) const
 {
 	matrix_t result;
-	if (rows_ == other.rows_ && columns_ == other.collumns_){
+	if (rows_ == other.rows_ && collumns_ == other.collumns_){
 	    result.elements_ = new float *[rows_];
 		for (std::size_t i = 0; i<rows_; i++) {
 			result.elements_[i] = new float [collumns_];
