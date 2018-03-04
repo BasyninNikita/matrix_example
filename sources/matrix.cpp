@@ -3,7 +3,6 @@
 matrix_t::matrix_t() : elements_{ nullptr }, rows_{ 0 }, collumns_{ 0 }
 {
 }
-
 matrix_t::matrix_t( matrix_t const & other )
 {
 	 rows_ = other.rows_;
@@ -16,22 +15,21 @@ matrix_t::matrix_t( matrix_t const & other )
 		}
 	}
 }
-
 matrix_t & matrix_t::operator =( matrix_t const & other )
 {
-		for (std::size_t i = 0; i < rows_; ++i) {
-			delete[] elements_[i];
+	for (std::size_t i = 0; i < rows_; ++i) {
+		delete[] elements_[i];
+	}
+	delete[] elements_;
+	rows_ = other.rows_;
+	collumns_ = other.collumns_;
+	elements_ = new float * [rows_];
+	for (std::size_t i = 0; i < rows_; ++i) {
+		elements_[i] = new float[collumns_];
+		for (std::size_t j = 0; j < collumns_; ++j) {
+			elements_[i][j] = other.elements_[i][j];
 		}
-		delete[] elements_;
-		rows_ = other.rows_;
-		collumns_ = other.collumns_;
-		elements_ = new float * [rows_];
-		for (std::size_t i = 0; i < rows_; ++i) {
-			elements_[i] = new float[collumns_];
-			for (std::size_t j = 0; j < collumns_; ++j) {
-				elements_[i][j] = other.elements_[i][j];
-			}
-		}
+	}			
 	return *this;
 }
 
@@ -69,17 +67,15 @@ matrix_t matrix_t::operator +( matrix_t const & other ) const
 			}
 		}
 	}
-	else
-	{
-		std::cout<<std::endl<<"i can't do it";
+	else {
+		std::cout << std::endl << "I can't do it";
 		exit(0);
 	}
 	return result;
 }
-
 matrix_t matrix_t::operator -( matrix_t const & other ) const
 {
-	matrix_t result;
+	matrix_t result;	
 	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
 	  	result.elements_ = new float *[rows_];
 		for (std::size_t i = 0; i<rows_; i++) {
@@ -93,14 +89,12 @@ matrix_t matrix_t::operator -( matrix_t const & other ) const
 			}
 		}
 	}
-	else
-	{
-		std::cout<<std::endl<<"i can't do it";
+	else {
+		std::cout << std::endl << "I can't do it";
 		exit(0);
 	}
 	return result;
 }
-
 matrix_t matrix_t::operator *( matrix_t const & other ) const
 {
 	matrix_t result;
@@ -110,7 +104,7 @@ matrix_t matrix_t::operator *( matrix_t const & other ) const
 			result.elements_[i] = new float [other.collumns_];
 	    }
 	    result.rows_ = rows_;
-	    result.collumns_ = other.collumns_;
+	    result.collumns_ = other.collumns_
 		for (std::size_t i = 0; i < rows_; ++i) {
 			for (std::size_t j = 0; j < other.collumns_; ++j) {
 				int result_ = 0;
@@ -121,14 +115,12 @@ matrix_t matrix_t::operator *( matrix_t const & other ) const
 			}
 		}
 	}
-	else
-	{
-		std::cout<<std::endl<<"i can't do it";
+	else {
+		std::cout << std::endl << "I can't do it";
 		exit(0);
 	}
 	return result;
 }
-
 matrix_t & matrix_t::operator -=( matrix_t const & other )
 {
 	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
@@ -139,13 +131,11 @@ matrix_t & matrix_t::operator -=( matrix_t const & other )
 		}
 	}
 	else {
-		std::cout << std::endl << "i can't do it";
+		std::cout << std::endl << "I can't do it";
 		exit(0);
 	}
-	
 	return *this;
 }
-
 matrix_t & matrix_t::operator +=( matrix_t const & other )
 {
 	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
@@ -156,17 +146,15 @@ matrix_t & matrix_t::operator +=( matrix_t const & other )
 		}
 	}
 	else {
-		std::cout << std::endl << "i can't do it";
+		std::cout << std::endl << "I can't do it";
 		exit(0);
 	}
-	
 	return *this;
 }
 
 matrix_t & matrix_t::operator *=( matrix_t const & other )
 {
 	matrix_t result;
-	
 	if (collumns_ == other.rows_) {
 		result.elements_ = new float *[rows_];
 		for (std::size_t i = 0; i<rows_; i++) {
@@ -174,7 +162,6 @@ matrix_t & matrix_t::operator *=( matrix_t const & other )
 	    }
 	    result.rows_ = rows_;
 	    result.collumns_ = other.collumns_;
-	    
 		for (std::size_t i = 0; i < rows_; ++i) {
 			for (std::size_t j = 0; j < other.collumns_; ++j) {
 				int result_ = 0;
@@ -187,7 +174,7 @@ matrix_t & matrix_t::operator *=( matrix_t const & other )
 		*this = result;
 	}
 	else {
-		std::cout << std::endl << "i can't do it";
+		std::cout << std::endl << "I can't do it";
 		exit(0);
 	}
 	
@@ -199,7 +186,6 @@ std::istream & matrix_t::read( std::istream & stream )
     std::size_t rows;
     std::size_t collumns;
     char symbol;
-    
     bool success = true;
     if( stream >> rows && stream >> symbol && symbol == ',' && stream >> collumns ) {
         float ** elements = new float *[ rows ];
