@@ -19,7 +19,7 @@ matrix_t::matrix_t( matrix_t const & other )
 
 matrix_t & matrix_t::operator =( matrix_t const & other )
 {
-		for (std::size_t i = 0; i < rows; ++i) {
+		for (std::size_t i = 0; i < rows_; ++i) {
 			delete[] elements_[i];
 		}
 		delete[] elements_;
@@ -29,7 +29,7 @@ matrix_t & matrix_t::operator =( matrix_t const & other )
 		for (std::size_t i = 0; i < rows_; ++i) {
 			elements_[i] = new float[columns_];
 			for (std::size_t j = 0; j < columns_; ++j) {
-				elements_[i][j] = other.elements_i][j];
+				elements_[i][j] = other.elements_[i][j];
 			}
 		}
 	return *this;
@@ -86,7 +86,7 @@ matrix_t matrix_t::operator -( matrix_t const & other ) const
 			result.elements_[i] = new float [columns_];
 		}
 		result.rows_ = rows_;
-		result.columns = columns_;	
+		result.columns_ = columns_;	
 		for (std::size_t i = 0; i<rows_; i++){	
 	 		for (std::size_t j = 0; j<columns_; j++){
 	 		  	result.elements_[i][j] = elements_[i][j]-other.elements_[i][j];
