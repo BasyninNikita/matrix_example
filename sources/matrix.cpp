@@ -19,19 +19,19 @@ matrix_t::matrix_t( matrix_t const & other )
 
 matrix_t & matrix_t::operator =( matrix_t const & other )
 {
-		for (std::size_t i = 0; i < rows_; ++i) {
-			delete[] elements_[i];
+	for (std::size_t i = 0; i < rows_; ++i) {
+		delete[] elements_[i];
+	}
+	delete[] elements_;
+	rows_ = other.rows_;
+	collumns_ = other.collumns_;
+	elements_ = new float * [rows_];
+	for (std::size_t i = 0; i < rows_; ++i) {
+		elements_[i] = new float[collumns_];
+		for (std::size_t j = 0; j < collumns_; ++j) {
+			elements_[i][j] = other.elements_[i][j];
 		}
-		delete[] elements_;
-		rows_ = other.rows_;
-		columns_ = other.columns_;
-		elements_ = new float * [rows_];
-		for (std::size_t i = 0; i < rows_; ++i) {
-			elements_[i] = new float[columns_];
-			for (std::size_t j = 0; j < columns_; ++j) {
-				elements_[i][j] = other.elements_[i][j];
-			}
-		}
+	}			
 	return *this;
 }
 
@@ -56,76 +56,82 @@ std::size_t matrix_t::collumns() const
 matrix_t matrix_t::operator +( matrix_t const & other ) const
 {
 	matrix_t result;
-	if (rows_ == other.rows_ && columns_ == other.columns_){
-	    result.elements_ = new float *[rows_];
+	
+	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
+	  	result.elements_ = new float *[rows_];
 		for (std::size_t i = 0; i<rows_; i++) {
-			result.elements_[i] = new float [columns_];
+			result.elements_[i] = new float [collumns_];
 		}
 		result.rows_ = rows_;
-		result.columns_ = columns_;	
-		for (std::size_t i = 0; i<rows_; i++){	
-	 		for (std::size_t j = 0; j<columns_; j++){
-	 		  	result.elements_[i][j] = elements_[i][j]+other.elements_[i][j];
+		result.collumns_ = collumns_;
+		
+		for (std::size_t i = 0; i<rows_; i++) {
+			for (std::size_t j = 0; j<collumns_; j++) {
+				result.elements_[i][j] = elements_[i][j] + other.elements_[i][j];
 			}
 		}
 	}
-	else
-	{
-		std::cout<<std::endl<<"i can't do it";
+	else {
+		std::cout << std::endl << "You can`t make this action";
 		exit(0);
 	}
+
 	return result;
 }
 
 matrix_t matrix_t::operator -( matrix_t const & other ) const
 {
 	matrix_t result;
-	if (rows_ == other.rows_ && columns_ == other.columns_){
-	    result.elements_ = new float *[rows_];
+	
+	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
+	  	result.elements_ = new float *[rows_];
 		for (std::size_t i = 0; i<rows_; i++) {
-			result.elements_[i] = new float [columns_];
+			result.elements_[i] = new float [collumns_];
 		}
 		result.rows_ = rows_;
-		result.columns_ = columns_;	
-		for (std::size_t i = 0; i<rows_; i++){	
-	 		for (std::size_t j = 0; j<columns_; j++){
-	 		  	result.elements_[i][j] = elements_[i][j]-other.elements_[i][j];
+		result.collumns_ = collumns_;
+		
+		for (std::size_t i = 0; i<rows_; i++) {
+			for (std::size_t j = 0; j<collumns_; j++) {
+				result.elements_[i][j] = elements_[i][j] - other.elements_[i][j];
 			}
 		}
 	}
-	else
-	{
-		std::cout<<std::endl<<"i can't do it";
+	else {
+		std::cout << std::endl << "You can`t make this action";
 		exit(0);
 	}
+
 	return result;
 }
 
 matrix_t matrix_t::operator *( matrix_t const & other ) const
 {
 	matrix_t result;
-	if (columns_ == other.rows_) {	
-	result.elements_ = new float *[rows_];
-		for (std::size_t i = 0; i<rows_t; i++) {
-			result.elements_[i] = new float [other.columns_];
+	
+	if (collumns_ == other.rows_) {
+  		result.elements_ = new float *[rows_];
+		for (std::size_t i = 0; i<rows_; i++) {
+			result.elements_[i] = new float [other.collumns_];
+	    }
+	    result.rows_ = rows_;
+	    result.collumns_ = other.collumns_;
+	    
+		for (std::size_t i = 0; i < rows_; ++i) {
+			for (std::size_t j = 0; j < other.collumns_; ++j) {
+				int result_ = 0;
+				for (std::size_t k = 0; k < other.rows_; ++k) {
+					result_ += elements_[i][k] * other.elements_[k][j];
+				}
+				result.elements_[i][j] = result_;
+			}
 		}
-		result.rows_ = rows_;
-		result.columns_ = other.columns_;
-		for(std::size_t i = 0; i < rows_; ++i ){
-    			for(std::size_t j = 0; j < other.columns_; ++j ){
-      		  		int result_ = 0;
-      		   		for( std::size_t k = 0; k < other.rows_; ++k ){
-       			 		result_ += elements_[i][k] * other.elements_[k][j];
-      		   		}
-      		  		result.elements_[i][j] = result_;
-    			}
-  		}
 	}
-	else
-	{
-		std::cout<<std::endl<<"i can't do it";
+	else {
+		std::cout << std::endl << "You can`t make this action";
 		exit(0);
 	}
+
 	return result;
 }
 
@@ -139,7 +145,7 @@ matrix_t & matrix_t::operator -=( matrix_t const & other )
 		}
 	}
 	else {
-		std::cout << std::endl << "i can't do it";
+		std::cout << std::endl << "You can`t make this action";
 		exit(0);
 	}
 	
@@ -156,7 +162,7 @@ matrix_t & matrix_t::operator +=( matrix_t const & other )
 		}
 	}
 	else {
-		std::cout << std::endl << "i can't do it";
+		std::cout << std::endl << "You can`t make this action";
 		exit(0);
 	}
 	
@@ -187,7 +193,7 @@ matrix_t & matrix_t::operator *=( matrix_t const & other )
 		*this = result;
 	}
 	else {
-		std::cout << std::endl << "i can't do it";
+		std::cout << std::endl << "You can`t make this action";
 		exit(0);
 	}
 	
@@ -245,7 +251,7 @@ std::ostream & matrix_t::write( std::ostream & stream ) const
 {
     stream << rows_ << ", " << collumns_;
     for( std::size_t i = 0; i < rows_; ++i ) {
-        stream << '\n';
+	stream << '\n';
         for( std::size_t j = 0; j < collumns_; ++j ) {
             stream << elements_[ i ][ j ];
             if( j != collumns_ - 1 ) {
@@ -253,6 +259,8 @@ std::ostream & matrix_t::write( std::ostream & stream ) const
             }
         }
     }
-  if (collumns_ != rows_) stream << '\n';  
+    if (collumns_ != rows_) stream << '\n';
+    
 	return stream;
 }
+
