@@ -80,16 +80,16 @@ matrix_t matrix_t::operator +( matrix_t const & other ) const
 matrix_t matrix_t::operator -( matrix_t const & other ) const
 {
 	matrix_t result;
-	if (rows_ == other.rows_ && collumns_ == other.collumns_){
-	    result.elements_ = new float *[rows_];
+	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
+	  	result.elements_ = new float *[rows_];
 		for (std::size_t i = 0; i<rows_; i++) {
 			result.elements_[i] = new float [collumns_];
 		}
 		result.rows_ = rows_;
-		result.collumns_ = collumns_;	
-		for (std::size_t i = 0; i<rows_; i++){	
-	 		for (std::size_t j = 0; j<collumns_; j++){
-	 		  	result.elements_[i][j] = elements_[i][j]-other.elements_[i][j];
+		result.collumns_ = collumns_;
+		for (std::size_t i = 0; i<rows_; i++) {
+			for (std::size_t j = 0; j<collumns_; j++) {
+				result.elements_[i][j] = elements_[i][j] - other.elements_[i][j];
 			}
 		}
 	}
@@ -104,22 +104,22 @@ matrix_t matrix_t::operator -( matrix_t const & other ) const
 matrix_t matrix_t::operator *( matrix_t const & other ) const
 {
 	matrix_t result;
-	if (collumns_ == other.rows_) {	
-	result.elements_ = new float *[rows_];
+	if (collumns_ == other.rows_) {
+  		result.elements_ = new float *[rows_];
 		for (std::size_t i = 0; i<rows_; i++) {
 			result.elements_[i] = new float [other.collumns_];
+	    }
+	    result.rows_ = rows_;
+	    result.collumns_ = other.collumns_;
+		for (std::size_t i = 0; i < rows_; ++i) {
+			for (std::size_t j = 0; j < other.collumns_; ++j) {
+				int result_ = 0;
+				for (std::size_t k = 0; k < other.rows_; ++k) {
+					result_ += elements_[i][k] * other.elements_[k][j];
+				}
+				result.elements_[i][j] = result_;
+			}
 		}
-		result.rows_ = rows_;
-		result.collumns_ = other.collumns_;
-		for(std::size_t i = 0; i < rows_; ++i ){
-    			for(std::size_t j = 0; j < other.collumns_; ++j ){
-      		  		int result_ = 0;
-      		   		for( std::size_t k = 0; k < other.rows_; ++k ){
-       			 		result_ += elements_[i][k] * other.elements_[k][j];
-      		   		}
-      		  		result.elements_[i][j] = result_;
-    			}
-  		}
 	}
 	else
 	{
