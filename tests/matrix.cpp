@@ -6,7 +6,7 @@
 
 TEST_CASE("creating matrix")
 {
-    matrix_t matrix;
+    matrix_t<int> matrix;
     REQUIRE( matrix.rows() == 0 );
     REQUIRE( matrix.collumns() == 0 );
 }
@@ -18,7 +18,7 @@ TEST_CASE("reading matrix")
         "1 1 1\n"
         "2 2 2\n"
         "3 3 3" };
-    matrix_t matrix;
+    matrix_t<int> matrix;
     std::istringstream istream{ input };
     
     REQUIRE( matrix.read( istream ) );
@@ -30,6 +30,21 @@ TEST_CASE("reading matrix")
     
     REQUIRE( input == ostream.str() );
 }
+TEST_CASE("reading other type matrix")
+{
+    std:: string input{
+        "3, 3\n"
+         "1.1 1.2 1.3\n"
+         "2.1 2.2 2.3\n"
+         "3.1 3.2 3.3\n"};
+    matrix_t<float> matrix;
+    std::istringstream istream{input};
+    REQUIRE( matrix.read(istream));
+    REQUIRE(matrix.rows()==3);
+    REQUIRE(matrix.columns()==3);
+    std::ostringstream ostream;
+    matrix.write(ostream);
+    REQUIRE(input==ostream.str());
 
 matrix_t matrix( std::string const & representation )
 {
