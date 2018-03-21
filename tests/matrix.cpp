@@ -28,7 +28,7 @@ TEST_CASE("reading matrix")
     std::ostringstream stream1;
     matrix.write( stream1 );
     
-    REQUIRE( input == ostream.str() );
+    REQUIRE( input == stream1.str() );
 }
 
 TEST_CASE("addings matrixs")
@@ -46,7 +46,7 @@ TEST_CASE("addings matrixs")
     matrix_t<float> first_matrix; 
     first_matrix.read( stream );
     
-    std::istringstream stream{ second_matrix_representation };
+    stream ( second_matrix_representation );
     matrix_t<float> second_matrix;
     second_matrix.read( stream );
     
@@ -60,7 +60,7 @@ TEST_CASE("addings matrixs")
     std::ostringstream stream1;
     result_matrix.write (stream1);
     
-    REQUIRE( ostream.str() == expected_result_matrix_representation );
+    REQUIRE( stream1.str() == expected_result_matrix_representation );
 }
 
 TEST_CASE("subtracting matrixs")
@@ -78,7 +78,7 @@ TEST_CASE("subtracting matrixs")
     matrix_t<float> first_matrix;
     first_matrix.read( stream );
     
-    std::istringstream stream{ second_matrix_representation };
+    stream ( second_matrix_representation );
     matrix_t<float> second_matrix;
     second_matrix.read( stream );
     
@@ -92,7 +92,7 @@ TEST_CASE("subtracting matrixs")
     std::ostringstream stream;
     result_matrix.write (stream1);
     
-    REQUIRE( ostream.str() == expected_result_matrix_representation );
+    REQUIRE( stream1.str() == expected_result_matrix_representation );
 }
 
 TEST_CASE("multiplying matrixs")
@@ -112,7 +112,7 @@ TEST_CASE("multiplying matrixs")
     matrix_t<int> first_matrix;
     first_matrix.read( stream );
     
-    std::istringstream stream{ second_matrix_representation };
+    stream ( second_matrix_representation );
     matrix_t<int> second_matrix;
     second_matrix.read( stream );
     
@@ -126,7 +126,7 @@ TEST_CASE("multiplying matrixs")
     std::ostringstream stream1;
     result_matrix.write (stream1);
     
-    REQUIRE( ostream.str() == expected_result_matrix_representation );
+    REQUIRE( stream1.str() == expected_result_matrix_representation );
 }
 
 TEST_CASE("addings_2 matrixs")
@@ -144,7 +144,7 @@ TEST_CASE("addings_2 matrixs")
     matrix_t<int> first_matrix;
     first_matrix.read( stream );
     
-    std::istringstream stream{ second_matrix_representation };
+    stream ( second_matrix_representation );
     matrix_t<int> second_matrix;
     second_matrix.read( stream );
     
@@ -158,7 +158,7 @@ TEST_CASE("addings_2 matrixs")
     std::ostringstream stream1;
     first_matrix.write (stream1);
     
-    REQUIRE( ostream.str() == expected_result_matrix_representation );
+    REQUIRE( stream1.str() == expected_result_matrix_representation );
 }
 
 TEST_CASE("subtracting_2 matrixs")
@@ -176,7 +176,7 @@ TEST_CASE("subtracting_2 matrixs")
     matrix_t<int> first_matrix;
     first_matrix.read( stream );
     
-    std::istringstream stream{ second_matrix_representation };
+    stream ( second_matrix_representation );
     matrix_t<int> second_matrix;
     second_matrix.read( stream );
     
@@ -190,7 +190,7 @@ TEST_CASE("subtracting_2 matrixs")
     std::ostringstream stream1;
     first_matrix.write (stream1);
     
-    REQUIRE( ostream.str() == expected_result_matrix_representation );
+    REQUIRE( stream1.str() == expected_result_matrix_representation );
 }
 
 TEST_CASE("multiplying_2 matrixs")
@@ -210,7 +210,7 @@ TEST_CASE("multiplying_2 matrixs")
     matrix_t<int> first_matrix;
     first_matrix.read( stream );
     
-    std::istringstream stream{ second_matrix_representation };
+    stream ( second_matrix_representation );
     matrix_t<int> second_matrix;
     second_matrix.read( stream );
     
@@ -224,7 +224,7 @@ TEST_CASE("multiplying_2 matrixs")
     std::ostringstream stream1;
     first_matrix.write (stream1);
     
-    REQUIRE( ostream.str() == expected_result_matrix_representation );
+    REQUIRE( stream1.str() == expected_result_matrix_representation );
 }
 
 TEST_CASE("addings matrixs 3x1")
@@ -246,7 +246,7 @@ TEST_CASE("addings matrixs 3x1")
     matrix_t<int> first_matrix;
     first_matrix.read( stream );
     
-    std::istringstream stream{ second_matrix_representation };
+    stream ( second_matrix_representation );
     matrix_t<int> second_matrix;
     second_matrix.read( stream );
     
@@ -262,7 +262,7 @@ TEST_CASE("addings matrixs 3x1")
     std::ostringstream stream1;
     result_matrix.write (stream1);
     
-    REQUIRE( ostream.str() == expected_result_matrix_representation );
+    REQUIRE( stream1.str() == expected_result_matrix_representation );
 }
 
 TEST_CASE("Good")
@@ -284,7 +284,7 @@ TEST_CASE("Good")
     matrix_t<int> first_matrix;
     first_matrix.read( stream );
     
-    std::istringstream stream{ second_matrix_representation };
+    stream ( second_matrix_representation );
     matrix_t<int> second_matrix;
     second_matrix.read( stream );
     
@@ -313,7 +313,7 @@ TEST_CASE("You can`t make this action")
     matrix_t<int> first_matrix;
     first_matrix.read( stream );
     
-    std::istringstream stream{ second_matrix_representation };
+    stream ( second_matrix_representation );
     matrix_t<int> second_matrix;
     second_matrix.read( stream );
     
