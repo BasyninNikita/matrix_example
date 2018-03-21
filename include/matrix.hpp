@@ -81,7 +81,7 @@ public:
 			}
 		}
 		else {
-			throw std::invalid_argument;
+			throw std::invalid_argument("Invalid syntax");
 		}
 
 		return result;
@@ -106,7 +106,7 @@ public:
 			}
 		}
 		else {
-			throw std::invalid_argument;
+			throw std::invalid_argument("Invalid syntax");
 		}
 
 		return result;
@@ -135,7 +135,7 @@ public:
 			}
 		}
 		else {
-			throw std::invalid_argument;
+			throw std::invalid_argument("Invalid syntax");
 		}
 
 		return result;
@@ -151,7 +151,7 @@ public:
 			}
 		}
 		else {
-			throw std::invalid_argument;
+			throw std::invalid_argument("Invalid syntax");
 		}
 	
 		return *this;
@@ -167,7 +167,7 @@ public:
 			}
 		}
 		else {
-			throw std::invalid_argument;
+			throw std::invalid_argument("Invalid syntax");
 		}
 	
 		return *this;
@@ -197,7 +197,7 @@ public:
 			*this = result;
 		}
 		else {
-			throw std::invalid_argument;
+			throw std::invalid_argument("Invalid syntax");
 		}
 	
 		return *this;
