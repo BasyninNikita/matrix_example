@@ -266,5 +266,5 @@ TEST_CASE("experiment_1")
     matrix_t<float> second_matrix;
     second_matrix.read( stream_ );
     
-    REQUIRE_THROWS_AS(first_matrix.success(second_matrix, '*'), std::invalid_argument);
+    REQUIRE_THROWS_AS(first_matrix * second_matrix), std::invalid_argument);
 }
