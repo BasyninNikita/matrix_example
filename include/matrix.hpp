@@ -81,7 +81,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 
 		return result;
@@ -106,7 +106,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 
 		return result;
@@ -135,7 +135,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 
 		return result;
@@ -151,7 +151,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 	
 		return *this;
@@ -167,7 +167,7 @@ public:
 			}
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 	
 		return *this;
@@ -197,7 +197,7 @@ public:
 			*this = result;
 		}
 		else {
-			throw false;
+			throw std::invalid_argument;
 		}
 	
 		return *this;
@@ -213,8 +213,8 @@ public:
 				try {
 					result = *this + one;
 				}
-				catch (bool s) {
-					str = s;
+				catch (std::invalid_argument s) {
+					str = false;
 				}
 				break;
 			}
@@ -223,8 +223,8 @@ public:
 				try {
 					result = *this -one;
 				}
-				catch (bool s) {
-					str = s;
+				catch (std::invalid_argument s) {
+					str = false;
 				}
 				break;
 			}
@@ -233,8 +233,8 @@ public:
 				try {
 					result = (*this) * one;
 				}
-				catch (bool s) {
-					str = s;
+				catch (std::invalid_argument s) {
+					str = false;
 				}
 				break;
 			}
