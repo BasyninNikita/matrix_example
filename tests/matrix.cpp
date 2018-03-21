@@ -266,5 +266,28 @@ TEST_CASE("experiment_1")
     matrix_t<float> second_matrix;
     second_matrix.read( stream_ );
     
-    REQUIRE_THROWS_AS(first_matrix * second_matrix), std::invalid_argument);
+    REQUIRE_THROWS_AS( (first_matrix * second_matrix ), std::invalid_argument);
+}
+
+TEST_CASE("experiment_2")
+{
+    std::string first_matrix_representation{
+        "1, 1\n"
+        "1.1\n"
+    };
+    std::string second_matrix_representation{
+        "2, 1\n"
+        "1.0\n"
+        "1.0\n"
+    };
+    
+    std::istringstream stream{ first_matrix_representation };
+    matrix_t<float> first_matrix;
+    first_matrix.read( stream );
+    
+    std::istringstream stream_ { second_matrix_representation };
+    matrix_t<float> second_matrix;
+    second_matrix.read( stream_ );
+    
+    REQUIRE_THROWS_AS( (first_matrix - second_matrix ), std::invalid_argument);
 }
