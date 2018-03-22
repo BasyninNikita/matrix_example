@@ -142,7 +142,7 @@ TEST_CASE("error adding matrixs")
     matrix1.read(istream1);
     std::istringstream istream2{input2};
     matrix2.read(istream2);    
-    REQUIRE_THROW_AS( (matrix1+matrix2), std::invalid_argument );
+    REQUIRE_THROWS_AS( (matrix1+matrix2), std::invalid_argument );
 }
 TEST_CASE("error subtrakting matrixs")
 {
@@ -162,7 +162,7 @@ TEST_CASE("error subtrakting matrixs")
     matrix1.read(istream1);
     std::istringstream istream2{input2};
     matrix2.read(istream2);    
-    REQUIRE_THROW_AS( (matrix1-matrix2), std::invalid_argument );
+    REQUIRE_THROWS_AS( (matrix1-matrix2), std::invalid_argument );
 }
     TEST_CASE("error multiplying matrixs")
 {
@@ -181,7 +181,7 @@ TEST_CASE("error subtrakting matrixs")
     matrix1.read(istream1);
     std::istringstream istream2{input2};
     matrix2.read(istream2);    
-    REQUIRE_THROW_AS( (matrix1*matrix2), std::invalid_argument );
+    REQUIRE_THROWS_AS( (matrix1*matrix2), std::invalid_argument );
 }
    TEST_CASE("adding= matrixs")
 {
@@ -278,7 +278,7 @@ TEST_CASE("error adding= matrixs")
     matrix1.read(istream1);
     std::istringstream istream2{input2};
     matrix2.read(istream2);    
-    REQUIRE_THROW_AS( (matrix1+=matrix2), std::invalid_argument );
+    REQUIRE_THROWS_AS( (matrix1+=matrix2), std::invalid_argument );
 }
 TEST_CASE("error subtrakting= matrixs")
 {
@@ -298,7 +298,7 @@ TEST_CASE("error subtrakting= matrixs")
     matrix1.read(istream1);
     std::istringstream istream2{input2};
     matrix2.read(istream2);    
-    REQUIRE_THROW_AS( (matrix1-=matrix2), std::invalid_argument );
+    REQUIRE_THROWS_AS( (matrix1-=matrix2), std::invalid_argument );
 }
     TEST_CASE("error multiplying= matrixs")
 {
@@ -317,6 +317,6 @@ TEST_CASE("error subtrakting= matrixs")
     matrix1.read(istream1);
     std::istringstream istream2{input2};
     matrix2.read(istream2);    
-    REQUIRE_THROW_AS( (matrix1*=matrix2), std::invalid_argument );
+    REQUIRE_THROWS_AS( (matrix1*=matrix2), std::invalid_argument );
 }
     
