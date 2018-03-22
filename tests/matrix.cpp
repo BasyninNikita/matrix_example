@@ -40,10 +40,11 @@ TEST_CASE("reading other type matrix")
     std::istringstream istream{input};
     REQUIRE( matrix.read(istream));
     REQUIRE(matrix.rows()==3);
-    REQUIRE(matrix.columns()==3);
+    REQUIRE(matrix.collumns()==3);
     std::ostringstream ostream;
     matrix.write(ostream);
     REQUIRE(input==ostream.str());
+}
 TEST_CASE("adding matrixs")
 {
     std::string input1{
