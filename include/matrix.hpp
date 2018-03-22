@@ -60,7 +60,7 @@ std::size_t collumns() const
 }
 matrix_t<T> operator +( matrix_t<T> const & other ) const
 {
-	matrix_t result;	
+	matrix_t<T> result;	
 	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
 	  	result.elements_ = new T *[rows_];
 		for (std::size_t i = 0; i<rows_; i++) {
@@ -82,7 +82,7 @@ matrix_t<T> operator +( matrix_t<T> const & other ) const
 
 matrix_t<T> operator -( matrix_t<T> const & other ) const
 {
-	matrix_t result;
+	matrix_t<T> result;
 	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
 	  	result.elements_ = new T *[rows_];
 		for (std::size_t i = 0; i<rows_; i++) {
