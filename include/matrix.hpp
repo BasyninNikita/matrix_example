@@ -3,10 +3,10 @@ template <typename T>
 class matrix_t
 {
 private:
-T ** elements_;
+	T ** elements_;
 	std::size_t rows_;
 	std::size_t collumns_;
-	public:
+public:
 	matrix_t() :
 	{
 		rows_=0;
@@ -239,3 +239,4 @@ std::ostream & write( std::ostream & stream ) const
     if (collumns_ != rows_) stream << '\n';
 	return stream;
 }
+};
