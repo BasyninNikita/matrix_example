@@ -63,7 +63,7 @@ TEST_CASE("adding matrixs")
     matrixr=matrix1+matrix2;
     std::string result_str{
         "1, 3\n"
-        "3 3 3\n"
+        "3 3 3"
     };
     std::ostringstream ostream;
     matrixr.write(ostream);
@@ -89,7 +89,7 @@ TEST_CASE("subtracting matrixs")
 
     std::string result_str{
         "1, 3\n"
-        "2.2 2.2 2.2\n"
+        "2.2 2.2 2.2"
     };
     std::ostringstream ostream;
     matrixr.write(ostream);
@@ -135,7 +135,7 @@ TEST_CASE("error adding matrixs")
     std::string input2{
         "2, 1\n"
         "1\n"
-        "1\n"
+        "1"
     };
    matrix_t<int> matrix1,matrix2;
     std::istringstream istream1{input1};
@@ -155,7 +155,7 @@ TEST_CASE("error subtrakting matrixs")
     std::string input2{
         "2, 3\n"
         "1.1 1.1 1.1\n"
-        "1.1 1.1 1.1\n"
+        "1.1 1.1 1.1"
     };
    matrix_t<float> matrix1,matrix2;
     std::istringstream istream1{input1};
@@ -174,7 +174,7 @@ TEST_CASE("error subtrakting matrixs")
     };
     std::string input2{
         "1, 3\n"
-        "1 1 1\n"
+        "1 1 1"
     };
    matrix_t<int> matrix1,matrix2;
     std::istringstream istream1{input1};
@@ -201,7 +201,7 @@ TEST_CASE("error subtrakting matrixs")
     matrix1+=matrix2;
     std::string result_str{
      "1, 3\n"
-     "3 3 3\n"
+     "3 3 3"
     };
     std::ostringstream ostream;
     matrix1.write(ostream);
@@ -226,7 +226,7 @@ TEST_CASE("subtracting= matrixs")
     matrix1-=matrix2;
     std::string result_str{
         "1, 3\n"
-        "2.2 2.2 2.2\n"
+        "2.2 2.2 2.2"
     };
     std::ostringstream ostream;
     matrix1.write(ostream);
@@ -271,7 +271,7 @@ TEST_CASE("error adding= matrixs")
     std::string input2{
         "2, 1\n"
         "1\n"
-        "1\n"
+        "1"
     };
    matrix_t<int> matrix1,matrix2;
     std::istringstream istream1{input1};
@@ -291,7 +291,7 @@ TEST_CASE("error subtrakting= matrixs")
     std::string input2{
         "2, 3\n"
         "1.1 1.1 1.1\n"
-        "1.1 1.1 1.1\n"
+        "1.1 1.1 1.1"
     };
    matrix_t<float> matrix1,matrix2;
     std::istringstream istream1{input1};
@@ -310,7 +310,7 @@ TEST_CASE("error subtrakting= matrixs")
     };
     std::string input2{
         "1, 3\n"
-        "1 1 1\n"
+        "1 1 1"
     };
    matrix_t<int> matrix1,matrix2;
     std::istringstream istream1{input1};
