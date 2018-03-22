@@ -75,7 +75,7 @@ matrix_t<T> operator +( matrix_t<T> const & other ) const
 		}
 	}
 	else {
-		throw false;
+		throw std::invalid_argument("error");
 	}
 	return result;
 }
@@ -97,7 +97,7 @@ matrix_t<T> operator -( matrix_t<T> const & other ) const
 		}
 	}
 	else {
-		throw false;
+		throw std::invalid_argument("error");
 	}
 	return result;
 }
@@ -122,25 +122,10 @@ matrix_t<T> operator *( matrix_t<T> const & other ) const
 		}
 	}
 	else {
-		throw false;
+		throw std::invalid_argument("error");
 	}
 
 	return result;
-}
-
-matrix_t<T> & operator -=( matrix_t<T> const & other )
-{
-	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
-		for (std::size_t i = 0; i<rows_; i++) {
-			for (std::size_t j = 0; j<collumns_; j++) {
-				elements_[i][j] -= other.elements_[i][j];
-			}
-		}
-	}
-	else {
-		throw false;
-	}
-	return *this;
 }
 matrix_t<T> & operator +=( matrix_t<T> const & other )
 {
@@ -152,7 +137,21 @@ matrix_t<T> & operator +=( matrix_t<T> const & other )
 		}
 	}
 	else {
-		throw false;
+		throw std::invalid_argument("error");
+	}
+	return *this;
+}
+matrix_t<T> & operator -=( matrix_t<T> const & other )
+{
+	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
+		for (std::size_t i = 0; i<rows_; i++) {
+			for (std::size_t j = 0; j<collumns_; j++) {
+				elements_[i][j] -= other.elements_[i][j];
+			}
+		}
+	}
+	else {
+		throw std::invalid_argument("error");
 	}
 	return *this;
 }
@@ -178,52 +177,10 @@ matrix_t<T> & operator *=( matrix_t<T> const & other )
 		*this = result;
 	}
 	else {
-		throw false;
+		throw std::invalid_argument("error");
 	}
 	return *this;
-}
-	bool succ(matrix_t<T> const & oth, char op)
-	{
-		bool a=true;
-		matrix_t<T> result;
-		if(op=='+')
-		{
-			try
-			{
-				result=*this+oth;
-			}
-			catch(bool b)
-			{
-				a=b;
-			}
-		}
-		else if(op=='-')
-		{
-			try
-			{
-				result=*this-oth;
-			}
-			catch(bool b)
-			{
-				a=b;
-			}
-		}
-		else if(op=='*')
-		{
-			try
-			{
-				result=*this*oth;
-			}
-			catch(bool b)
-			{
-				a=b;
-			}
-		}
-		return a;
-	}
-	
-				
-		
+}	
 
 std::istream & read( std::istream & stream )
 {
