@@ -9,9 +9,9 @@ private:
 public:
 	matrix_t() :
 	{
+		elements_=nullptr ;
 		rows_=0;
 		collumns_=0;
-		elements_=nullptr ;
 	}
 
 matrix_t( matrix_t<T> const & other )
