@@ -187,65 +187,6 @@ TEST_CASE("addings matrixs 3x1")
     REQUIRE( output.str() == expected_result_matrix_representation );
 }
 
-TEST_CASE("Good")
-{
-    std::string first_matrix_representation{
-        "3, 1\n"
-        "1\n"
-        "1\n"
-        "1\n"
-    };
-    std::string second_matrix_representation{
-        "3, 1\n"
-        "1\n"
-        "1\n"
-        "1\n"
-    };
-    
-    std::istringstream stream{ first_matrix_representation };
-    matrix_t<int> first_matrix;
-    first_matrix.read( stream );
-    
-    std::istringstream stream_ { second_matrix_representation };
-    matrix_t<int> second_matrix;
-    second_matrix.read( stream_ );
-    
-    char op = '+';
-    bool str_ = first_matrix.success (second_matrix, op);
-    bool expect = true;
-    
-    REQUIRE( str_ == expect );
-}
-
-TEST_CASE("You can`t make this action")
-{
-    std::string first_matrix_representation{
-        "3, 1\n"
-        "1\n"
-        "1\n"
-        "1\n"
-    };
-    std::string second_matrix_representation{
-        "2, 1\n"
-        "1\n"
-        "1\n"
-    };
-    
-    std::istringstream stream{ first_matrix_representation };
-    matrix_t<int> first_matrix;
-    first_matrix.read( stream );
-    
-    std::istringstream stream_ { second_matrix_representation };
-    matrix_t<int> second_matrix;
-    second_matrix.read( stream_ );
-    
-    char op = '-';
-    bool str_ = first_matrix.success (second_matrix, op);
-    bool expect = false;
-    
-    REQUIRE( str_ == expect );
-}
-
 TEST_CASE("experiment_1")
 {
     std::string first_matrix_representation{
