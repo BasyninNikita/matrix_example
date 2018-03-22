@@ -7,10 +7,11 @@ private:
 	std::size_t rows_;
 	std::size_t collumns_;
 public:
-	matrix_t() :
-		elements_={nullptr} ;
-		rows_={0};
-		collumns_={0};
+	matrix_t() :{
+		elements_=nullptr ;
+		rows_=0;
+		collumns_=0;
+}
 matrix_t( matrix_t<T> const & other )
 {
 	rows_ = other.rows_;
