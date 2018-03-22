@@ -11,8 +11,8 @@ public:
 	matrix_t( matrix_t<T> const & other );
 	matrix_t & operator =( matrix_t<T> const & other );
 	~matrix_t();
-	std::size_t rows() const;
-	std::size_t collumns() const;
+	std::size_t rows() const ;
+	std::size_t collumns() const ;
 	matrix_t operator +( matrix_t<T> const & other ) const;
 	matrix_t operator -( matrix_t<T> const & other ) const;
 	matrix_t operator *( matrix_t<T> const & other ) const;
@@ -66,12 +66,12 @@ matrix_t<T>::~matrix_t()
 	delete []elements_;
 }
 template<typename T>
-std::size_t rows() const
+std::size_t matrix_t<T>::rows() const
 {
     return rows_;
 }
 template<typename T>
-std::size_t collumns() const
+std::size_t matrix_t<T>::collumns() const
 {
     return collumns_;
 }
@@ -147,7 +147,7 @@ matrix_t<T>matrix_t<T>::matrix_t<T>:: operator *( matrix_t<T> const & other ) co
 	return result;
 }
 template<typename T>
-matrix_t<T> &matrix_t<T>:: operator +=( matrix_t<T> const & other )
+matrix_t<T> &matrix_t<T>:: operator +=( matrix_t const & other )
 {
 	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
 		for (std::size_t i = 0; i<rows_; i++) {
@@ -162,7 +162,7 @@ matrix_t<T> &matrix_t<T>:: operator +=( matrix_t<T> const & other )
 	return *this;
 }
 template<typename T>
-matrix_t<T> & operator -=( matrix_t<T> const & other )
+matrix_t<T> & matrix_t<T>::operator -=( matrix_t const & other )
 {
 	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
 		for (std::size_t i = 0; i<rows_; i++) {
@@ -177,7 +177,7 @@ matrix_t<T> & operator -=( matrix_t<T> const & other )
 	return *this;
 }
 template<typename T>
-matrix_t<T> &matrix_t<T>:: operator *=( matrix_t<T> const & other )
+matrix_t<T> &matrix_t<T>:: operator *=( matrix_t const & other )
 {
 	matrix_t<T> result;
 	if (collumns_ == other.rows_) {
