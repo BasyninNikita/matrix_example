@@ -120,7 +120,7 @@ matrix_t<T>matrix_t<T>:: operator -( matrix_t<T> const & other ) const
 	return result;
 }
 template<typename T>
-matrix_t<T>matrix_t<T>::matrix_t<T>:: operator *( matrix_t<T> const & other ) const
+matrix_t<T>matrix_t<T>:: operator *( matrix_t<T> const & other ) const
 {
 	matrix_t<T> result;	
 	if (collumns_ == other.rows_) {
