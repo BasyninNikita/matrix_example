@@ -16,9 +16,9 @@ public:
 	matrix_t operator +( matrix_t<T> const & other ) const;
 	matrix_t operator -( matrix_t<T> const & other ) const;
 	matrix_t operator *( matrix_t<T> const & other ) const;
-	matrix_t operator +=( matrix_t<T> const & other ) ;
-	matrix_t operator -=( matrix_t<T> const & other ) ;
-	matrix_t operator *=( matrix_t<T> const & other ) ;
+	matrix_t & operator +=( matrix_t<T> const & other ) ;
+	matrix_t & operator -=( matrix_t<T> const & other ) ;
+	matrix_t & operator *=( matrix_t<T> const & other ) ;
 	std::istream & read( std::istream & stream );
 	std::ostream & write(std::ostream  & stream) const;
 };
