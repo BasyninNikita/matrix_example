@@ -16,9 +16,9 @@ public:
 	matrix_t operator +( matrix_t<T> const & other ) const;
 	matrix_t operator -( matrix_t<T> const & other ) const;
 	matrix_t operator *( matrix_t<T> const & other ) const;
-	matrix_t operator +=( matrix_t<T> const & other ) const;
-	matrix_t operator -=( matrix_t<T> const & other ) const;
-	matrix_t operator *=( matrix_t<T> const & other ) const;
+	matrix_t operator +=( matrix_t<T> const & other ) ;
+	matrix_t operator -=( matrix_t<T> const & other ) ;
+	matrix_t operator *=( matrix_t<T> const & other ) ;
 	std::istream & read( std::istream & stream );
 	std::ostream & write(std::ostream  & stream) const;
 };
@@ -147,7 +147,7 @@ matrix_t<T>matrix_t<T>::matrix_t<T>:: operator *( matrix_t<T> const & other ) co
 	return result;
 }
 template<typename T>
-matrix_t<T> &matrix_t<T>:: operator +=( matrix_t const & other )
+matrix_t<T> & matrix_t<T>:: operator +=( matrix_t const & other )
 {
 	if (rows_ == other.rows_ && collumns_ == other.collumns_) {
 		for (std::size_t i = 0; i<rows_; i++) {
@@ -259,7 +259,5 @@ std::ostream &matrix_t<T>:: write( std::ostream & stream ) const
             }
         }
     }
-    if (collumns_ != rows_) stream << '\n';
 	return stream;
 }
-};
