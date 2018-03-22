@@ -203,46 +203,6 @@ public:
 	
 		return *this;
 	}
-	
-	bool success (matrix_t<T> const & one, char op) 
-	{
-		matrix_t<T> result;
-		bool str = true;
-	
-		switch (op) {
-			case '+': {
-				try {
-					result = *this + one;
-				}
-				catch (std::invalid_argument s) {
-					str = false;
-				}
-				break;
-			}
-			
-			case '-': {
-				try {
-					result = *this -one;
-				}
-				catch (std::invalid_argument s) {
-					str = false;
-				}
-				break;
-			}
-			
-			case '*': {
-				try {
-					result = (*this) * one;
-				}
-				catch (std::invalid_argument s) {
-					str = false;
-				}
-				break;
-			}
-		}
-	
-		return str;
-	}
 
 	std::istream & read( std::istream & stream )
 	{
