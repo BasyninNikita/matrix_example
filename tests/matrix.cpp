@@ -198,7 +198,7 @@ TEST_CASE("error subtrakting matrixs")
     matrix1.read(istream1);
     std::istringstream istream2{input2};
     matrix2.read(istream2);
-    matrix1+=matrix2
+    matrix1+=matrix2;
     std::string result_str{
      "1, 3\n"
      "3 3 3\n"
@@ -256,7 +256,7 @@ TEST_CASE("multiplying= matrixs")
         "3"
     };
    std::ostringstream ostream;
-    matrixr.write(ostream);
+    matrix1.write(ostream);
     REQUIRE( result_str == ostream.str());
 }
 
